@@ -224,7 +224,8 @@ label {
    
    .previewStegoImage {
       max-width: 100%;
-      max-height: 220px;
+      max-height: 180px;
+
    }
    
    label {
