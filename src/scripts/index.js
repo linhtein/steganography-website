@@ -104,13 +104,16 @@ const handleCombine = () => {
       return alert('Key masih kosong!')
    } else if(coverImage.value === '') {
       return alert('Cover Image masih kosong!')
+   } else if (chipertext.value === '') {
+      return alert('Chipertext masih kosong!')
    }
 
    let extension = coverImage.value.substring(coverImage.value.lastIndexOf('.')  + 1)
    if (extension == "gif" || extension == "png" || extension == "bmp" || extension == "jpeg" || extension == "jpg") {
       checkTextAfter()
-      previewAfter.src = steg.encode(chipertext.value, result);
 
+      const resultAfterCombine = steg.encode(chipertext.value, result);
+      previewAfter.src = resultAfterCombine
    }
 }
 
@@ -167,7 +170,11 @@ const handleDecrypt = () => {
       if (stegoImage.files && stegoImage.files[0]) {
          var reader = new FileReader();
          reader.onload = function(e) {
-            resultDecrypt.innerText = caesarShift(steg.decode(e.target.result), parseInt(`-${keyDecrypt.value}`))
+            const result = caesarShift(steg.decode(e.target.result), parseInt(`-${keyDecrypt.value}`))
+            if(result === '') {
+               alert('data tidak ditemukan!')
+            }
+            resultDecrypt.innerText = result
          };
       }
       reader.readAsDataURL(stegoImage.files[0]);
