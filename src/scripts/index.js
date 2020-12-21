@@ -16,12 +16,12 @@ let result
 const encryptCrypto = () => {
    setTimeout(() => {
    if(plainText.value === '' || key.value === '') {
-      chipertext.innerHTML = ''
+      chipertext.value = ''
 
       return;
    }
    const result = caesarShift(plainText.value, parseInt(key.value))
-   chipertext.innerHTML = result
+   chipertext.value = result
    }, 400);
 }
 
@@ -169,15 +169,16 @@ const handleDecrypt = () => {
    if (extension == "gif" || extension == "png" || extension == "bmp" || extension == "jpeg" || extension == "jpg") {
       if (stegoImage.files && stegoImage.files[0]) {
          var reader = new FileReader();
+         reader.readAsDataURL(stegoImage.files[0]);
+
          reader.onload = function(e) {
             const result = caesarShift(steg.decode(e.target.result), parseInt(`-${keyDecrypt.value}`))
             if(result === '') {
-               alert('data tidak ditemukan!')
+               return alert('data tidak ditemukan!')
             }
-            resultDecrypt.innerText = result
+            resultDecrypt.value = result
          };
       }
-      reader.readAsDataURL(stegoImage.files[0]);
    }
 
 
@@ -186,7 +187,7 @@ const handleDecrypt = () => {
 const reset = () => {
    plainText.value = ''
    key.value = ''
-   chipertext.innerHTML = ''
+   chipertext.value = ''
    coverImage.value = ''
    previewBefore.src = ''
    previewAfter.src = ''
