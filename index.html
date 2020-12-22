@@ -46,7 +46,7 @@
                <textarea class="form-control" id="plaintext" rows="3" onkeyup="encryptCrypto()"></textarea>
             </div>
             <div class="mb-3">
-               <label for="key" class="form-label">Key</label>
+               <label for="key" class="form-label">Shift</label>
                <input type="number" class="form-control" id="key" style="width: 120px;" onkeyup="encryptCrypto()" onchange="encryptCrypto()">
             </div>
             <div class="mb-3">
@@ -87,7 +87,7 @@
             </div>
             <img src="" alt="" class="previewStegoImage">
             <div class="mb-5" style="margin-top: -20px;">
-               <label for="keyDecrypt" class="form-label">Key</label>
+               <label for="keyDecrypt" class="form-label">Shift</label>
                <input type="number" class="form-control" id="keyDecrypt" style="width: 120px;">
             </div>
             <button class="btn btn-primary px-3 mr-3 btn-decyrpt" onclick="handleDecrypt()">Decrypt</button>
