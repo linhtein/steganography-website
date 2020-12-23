@@ -64,12 +64,14 @@
          </div>
          <div class="col-6">
             <div class="before text-center">
-               <img src="" alt="" id="previewBefore">
+               <!-- <img src="" alt="" id="previewBefore"> -->
+               <canvas id="canvas" class="previewCanvas"></canvas>
                <p class="text-preview text-before"></p>
             </div>
             
             <div class="after text-center">
-               <img src="" alt="" id="previewAfter">
+               <!-- <img src="" alt="" id="previewAfter"> -->
+               <canvas id="canvasAfter" class="previewCanvas"></canvas>
                <p class="text-preview text-after"></p>
             </div>
          </div>
@@ -85,8 +87,9 @@
                <input class="form-control" type="file" id="stegoImage" accept="image/*" onchange="handleStegoImage(this)">
                <small style="font-size: 12px;">input file only images</small>
             </div>
-            <img src="" alt="" class="previewStegoImage">
-            <div class="mb-5" style="margin-top: -20px;">
+            <!-- <img src="" alt="" class="previewStegoImage"> -->
+            <canvas id="canvasDecrypt" class="previewStegoImage previewCanvasDecrypt"></canvas>
+            <div class="shiftDecrypt mb-5" style="margin-top: -20px;">
                <label for="keyDecrypt" class="form-label">Shift</label>
                <input type="number" class="form-control" id="keyDecrypt" style="width: 120px;">
             </div>
@@ -110,6 +113,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
    <script src="./src/scripts/index.js"></script>
-   <script src="./src/scripts/steganography.min.js"></script>
 </body>
 </html>

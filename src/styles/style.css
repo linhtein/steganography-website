@@ -73,16 +73,21 @@ label {
    max-height: 220px;
 }
 
+.previewCanvas {
+   max-width: 100%;
+   min-height: 200px;
+}
+
 #previewAfter {
    max-width: 100%;
    max-height: 220px;
 }
 
 .text-preview {
-   margin-top: 10px;
    text-align: center;
    font-weight: 600;
 }
+
 
 .decrypt {
    color: #4A475C !important;
@@ -103,6 +108,11 @@ label {
 .previewStegoImage {
    max-width: 100%;
    max-height: 220px;
+}
+
+.previewCanvasDecrypt {
+   min-width: 60%;
+   max-height: 0px;
 }
 
 @media only screen and (max-width: 600px) {
