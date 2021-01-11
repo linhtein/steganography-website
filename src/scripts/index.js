@@ -37,8 +37,9 @@ const encryptCrypto = () => {
 var caesarShift = function (str, amount) {
    // Wrap the amount
    if (amount < 0) {
-   return caesarShift(str, amount + 26);
+      return caesarShift(str, amount + 26);
    }
+
    // Make an output variable
    var output = "";
 
@@ -51,7 +52,7 @@ var caesarShift = function (str, amount) {
    if (c.match(/[a-z]/i)) {
       // Get its code
       var code = str.charCodeAt(i);
-
+      console.log('code', code)
       // Uppercase letters
       if (code >= 65 && code <= 90) {
          c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
@@ -260,14 +261,10 @@ const handleDecrypt = () => {
                   console.log('shift', shift)
                   console.log('resultDecode', resultDecode)
                   resultDecrypt.value = resultDecode
-
             }
-
          }
-
          // read as dataUrl(base64)
          fr.readAsDataURL( file );
-
       }
    }
 
