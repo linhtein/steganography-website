@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&family=Rock+Salt&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <link rel="stylesheet" href="./src/styles/style.css">
+   <link rel="stylesheet" href="animate_it/animate.css">
+   <title>Crpytography & Steganography</title>
+</head>
+<body id="landing-page">
+   
+   <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+         <a class="navbar-brand " href="#landing-page">Image Steganography</a>
+         <div class="right mx-4">
+            <a class="btn-encrypt btn-outline-info btn mx-2 fw-bold" href="#encrypt">Encrypt</a>
+            <a class="btn-decrypt btn-outline-warning btn mx-2 fw-bold" href="#decrypt">Decrypt</a>
+         </div>
+      </div>
+   </nav>
+
+   <section class="landing-page">
+      <div class="row">
+         <div class="col-6" id="title-left">
+            <h1 class="title">
+               Securing Message with Cryptography Caesar Cipher and Steganography
+            </h1>
+            <p>keep your message from being discovered by others</p>
+
+            
+         </div>
+         <div class="col-6">
+            <img class="img-landingpage" id="title-right" src="./src/images/security.png" alt="">
+         </div>
+      </div>
+   </section>
+
+   <div id="encrypt" style="height: 10vh;"></div>
+   <section class="encrypt">
+      <div class="encrypt-title text-center wow animate__heartBeat">Encrypt</div>
+      <div class="row mt-3">
+         <div class="col-6 wow animate__slideInLeft">
+            <div class="mb-3">
+               <label for="plaintext" class="form-label">Plaintext</label>
+               <textarea class="form-control" id="plaintext" rows="3" onkeyup="encryptCrypto()"></textarea>
+            </div>
+            <div class="mb-3">
+               <label for="key" class="form-label">Shift</label>
+               <input type="number" class="form-control" id="key" style="width: 120px;" onkeyup="encryptCrypto()" onchange="encryptCrypto()">
+            </div>
+            <div class="mb-3">
+               <label for="chipertext" class="form-label">Ciphertext</label>
+               <textarea class="form-control" id="chipertext" rows="3" readonly></textarea>
+            </div>
+            <div class="mb-3">
+               <label for="coverImage" class="form-label">Cover Image</label>
+               <input class="form-control" type="file" id="coverImage" accept="image/*" onchange="handleCoverImage(this)">
+               <small style="font-size: 12px;">input file only images</small>
+            </div>
+            <button class="btn btn-primary btn-combine" id="btn-combine" onclick="handleCombine()">Combine</button>
+            <button class="btn btn-outline-danger px-3 btn-reset-encrypt" onclick="reset()">Reset</button>
+
+         </div>
+         <div class="col-6">
+            <div class="before text-center">
+               <!-- <img src="" alt="" id="previewBefore"> -->
+               <canvas id="canvas" class="previewCanvas"></canvas>
+               <p class="text-preview text-before"></p>
+            </div>
+            
+            <div class="after text-center">
+               <!-- <img src="" alt="" id="previewAfter"> -->
+               <canvas id="canvasAfter" class="previewCanvas"></canvas>
+               <p class="text-preview text-after"></p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="decrypt" id="decrypt">   
+      <div class="decrypt-title text-center wow animate__heartBeat">Decrypt</div>
+      <div class="row mt-3">
+         <div class="col-6 wow animate__slideInLeft" id="btm-left">
+            <div class="mb-3">
+               <label for="stegoImage" class="form-label">Stego Image</label>
+               <input class="form-control" type="file" id="stegoImage" accept="image/*" onchange="handleStegoImage(this)">
+               <small style="font-size: 12px;">input file only images</small>
+            </div>
+            <!-- <img src="" alt="" class="previewStegoImage"> -->
+            <canvas id="canvasDecrypt" class="previewStegoImage previewCanvasDecrypt"></canvas>
+            <div class="shiftDecrypt mb-5" style="margin-top: -20px;">
+               <label for="keyDecrypt" class="form-label">Shift</label>
+               <input type="number" class="form-control" id="keyDecrypt" style="width: 120px;">
+            </div>
+            <button class="btn btn-primary px-3 mr-3 btn-decyrpt" onclick="handleDecrypt()">Decrypt</button>
+            <button class="btn btn-outline-warning px-3 btn-reset-decyrpt" onclick="resetDcrypt()">Reset</button>
+         </div>
+         <div class="col-6 wow animate__slideInRight"">
+            <div class="mb-3">
+               <label for="resultDecrypt" class="form-label ">Result</label>
+               <textarea class="form-control" id="resultDecrypt" rows="4" cols="7" readonly style="opacity: 1;"></textarea>
+            </div>
+         </div>
+      </div>
+   </section>
+   
+   
+   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="wow/wow.js"></script>
+   <script src="./src/scripts/second-index.js"></script>
+   <script>
+       wow = new WOW(
+                      {
+                      boxClass:     'wow',      // default
+                      animateClass: 'animate__animated', // default
+                      offset:       0,          // default
+                      mobile:       true,       // default
+                      live:         true        // default
+                    }
+                    )
+                    wow.init();
+   </script>
+</body>
+</html>

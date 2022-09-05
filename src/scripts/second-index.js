@@ -83,7 +83,7 @@ const handleCoverImage = (e) => {
             // clean canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             img.src = e.target.result
-            checkTextBefore()
+            checkTextBefore() 
          };
          
          reader.onloadend =() => {
@@ -114,17 +114,15 @@ const checkTextAfter = () => {
 const handleCombine = () => {
    if(plainText.value === '') {
       chipertext.innerHTML = ''
-      return alert('Plaintext masih kosong!')
+      return alert('Plaintext Enter!')
    } else if(key.value === '') {
       chipertext.innerHTML = ''
-      return alert('Key masih kosong!')
+      return alert('Key Enter!')
    } else if(coverImage.value === '') {
-      return alert('Cover Image masih kosong!')
+      return alert('Choose Image!')
    } else if (chipertext.value === '') {
-      return alert('Chipertext masih kosong!')
+      return alert('Chipertext Enter!')
    }
-
-
    let extension = coverImage.value.substring(coverImage.value.lastIndexOf('.')  + 1)
    if (extension == "gif" || extension == "png" || extension == "bmp" || extension == "jpeg" || extension == "jpg") {
       checkTextAfter()
@@ -136,7 +134,6 @@ const handleCombine = () => {
       fr.addEventListener('loadend', (e) => {
          let img = new Image()
          img.src = e.target.result
-
 
          img.onload = function() {
             // get imageData - consist of rgba value for each array index
@@ -182,8 +179,8 @@ const handleStegoImage = (e) => {
 }
 
 const handleDecrypt = () => {
-   if(stegoImage.value === '') return alert('upload stego image terlebih dahulu!')
-   if(keyDecrypt.value === '') return alert('isi field key terlebih dahulu!')
+   if(stegoImage.value === '') return alert('Upload Image!')
+   if(keyDecrypt.value === '') return alert('Enter Secret Key!')
 
    let extension = stegoImage.value.substring(stegoImage.value.lastIndexOf('.')  + 1)
    
